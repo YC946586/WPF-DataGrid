@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_DataGrid"
         xmlns:viewModel="clr-namespace:WPF_DataGrid.ViewModel"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
-     <Window.DataContext>
+    <Window.DataContext>
         <viewModel:MainViewModel/>
-     </Window.DataContext>
+    </Window.DataContext>
     <Window.Resources>
         <!--单元格样式-->
         <Style   TargetType="{x:Type DataGridCell}">
@@ -206,12 +206,51 @@
 
     </Window.Resources>
     <Grid>
-        <DataGrid   Margin="15"   IsReadOnly="True" ItemsSource="{Binding GridModelList}"   >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox Header="操作区" VerticalAlignment="Center">
+           <Grid  Margin="0 20" Height="30">
+                <TextBox Width="100" Text="{Binding SearchText}" HorizontalAlignment="Left"/>
+                <Button Content="查询" Width="80" Command="{Binding QueryCommand}" HorizontalAlignment="Left"  Margin="110 0 0 0"/>
+
+                <Button Content="批量删除" Command="{Binding AllDelCommand}" Width="100" HorizontalAlignment="Right"></Button>
+               
+            </Grid>
+           
+        </GroupBox>
+        <DataGrid   Margin="15 0"   IsReadOnly="True" ItemsSource="{Binding GridModelList}"  Grid.Row="1"  >
+            <!--双击命令 LeftDoubleClick 有需要的可以自己绑定命令-->
+            <DataGrid.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick"  CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=SelectedItem}"  />
+            </DataGrid.InputBindings>
             <DataGrid.Columns>
+                <DataGridTemplateColumn  Width="80">
+                    <DataGridTemplateColumn.Header>
+                        <CheckBox  IsChecked="{Binding  DataContext.CheckAll,RelativeSource={ RelativeSource Mode=FindAncestor,AncestorType=Window}}" 
+                                      FocusVisualStyle="{x:Null}"  Content="全选"/>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <CheckBox  IsChecked="{Binding IsCheck,UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding FunName}" Header="账户名称"  Width="140"/>
                 <DataGridTextColumn Binding="{Binding BrushsPath}" Header="类型" Width="100"/>
                 <DataGridTextColumn Binding="{Binding Depict}" Header="名称" Width="3*"/>
-               
+                <DataGridTemplateColumn Header="操作" Width="110" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button   Content="删除" CommandParameter="{Binding}"   Width="80"
+                                     Command="{Binding DataContext.DelCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" 
+                                             />
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
