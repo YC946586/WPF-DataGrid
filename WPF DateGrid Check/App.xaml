@@ -1,8 +1,8 @@
-﻿<Application x:Class="WPF_TreeView.App"
+﻿<Application x:Class="WPF_DateGrid_Check.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WPF_TreeView"
-             StartupUri="Window1.xaml">
+             xmlns:local="clr-namespace:WPF_DateGrid_Check"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
          
     </Application.Resources>

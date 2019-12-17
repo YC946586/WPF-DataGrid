@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF DataGrid", "WPF DataGri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF TreeView", "WPF TreeView\WPF TreeView.csproj", "{2EF83574-27A6-4323-BBED-440FA07C97E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF DateGrid Check", "WPF DateGrid Check\WPF DateGrid Check.csproj", "{699742C0-EC6F-4DBB-BA29-8DB268A338DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2EF83574-27A6-4323-BBED-440FA07C97E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EF83574-27A6-4323-BBED-440FA07C97E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EF83574-27A6-4323-BBED-440FA07C97E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{699742C0-EC6F-4DBB-BA29-8DB268A338DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{699742C0-EC6F-4DBB-BA29-8DB268A338DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{699742C0-EC6F-4DBB-BA29-8DB268A338DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{699742C0-EC6F-4DBB-BA29-8DB268A338DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
